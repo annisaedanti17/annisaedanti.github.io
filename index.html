@@ -1,371 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--=============== TITLE ===============-->
-<title>BurgerNiz</title>
+  <!--=============== TITLE ===============-->
+  <title>BurgerNiz</title>
 
-<!--=============== FAVICON ===============-->
-<link rel="shortcut icon" href="asset/Logo.png" type="image/x-icon">
+  <!--=============== FAVICON ===============-->
+  <link rel="shortcut icon" href="asset/Logo.png" type="image/x-icon">
 
-<!--=============== REMIXICONS ===============-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
+  <!--=============== REMIXICONS ===============-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
 
-<!--=============== CSS ===============-->
-<link rel="stylesheet" href="style.css">
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="style.css">
 
-<!--=============== JS===============-->
-<script src="main.js" defer></script>
+  <!--=============== jQuery (untuk AJAX) ===============-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!--=============== JS (main.js) ===============-->
+  <script src="main.js" defer></script>
 </head>
-
 <body>
-<canvas id="canvas"></canvas>
- <!--=============== Header ===============-->   
- <header>
+  <canvas id="canvas"></canvas>
+  
+  <!--=============== Header ===============-->   
+  <header>
     <a href="#" class="logo"><img src="Asset/Logo.png" alt="">BurgerNiz</a>
     <div id="menu-icon" class="menu-icon">
-        <i class="ri-align-justify"></i>
-      </div>
+      <i class="ri-align-justify"></i>
+    </div>
     <ul class="navbar">
-        <li>
-            <a href="#home" >Home</a>
-        </li>
-
-        <li >
-            <a href="#about" >About</a>
-        </li>
-
-        <li >
-            <a href="#favorit" >Favorit</a>
-        </li>
-
-        <li >
-            <a href="#menu" >Menu</a>
-        </li>
-        
-        <li >
-            <a href="#contact" >Contact</a>
-        </li>
-       
+      <li><a href="#home" >Home</a></li>
+      <li><a href="#about" >About</a></li>
+      <li><a href="#favorit" >Favorit</a></li>
+      <li><a href="#menu" >Menu</a></li>
+      <li><a href="#contact" >Contact</a></li>
     </ul>
     <i id="mode" class="ri-moon-line"></i>
-        <a class="btn-login" href="login.html" >Login</a>
- </header>
+    <a class="btn-login" href="login.html" >Login</a>
+  </header>
 
- <!--=============== Home start===============-->   
-<section class="home" id="home">
-    <!--=============== SVG BLOB===============-->   
+  <!--=============== Home start ===============-->   
+  <section class="home" id="home">
+    <!--=============== SVG BLOB ===============-->   
     <div class="blob">
-        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color: rgb(255, 232, 167);"></stop>
-                <stop offset="100%" style="stop-color: rgb(255, 124, 30);"></stop>
-              </linearGradient>
-            </defs>
-
-            <path fill="url(#gradient)">
-                <animate attributeName="d"
-                dur="10s"
-                repeatCount="indefinite"
-                values="
-                M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
-            
-                M423,320.5Q444,391,373.5,402.5Q303,414,251,411Q199,408,146.5,385.5Q94,363,57,306.5Q20,250,62.5,197Q105,144,152,119Q199,94,250.5,91.5Q302,89,353,113.5Q404,138,403,194Q402,250,423,320.5Z;
-            
-                M404,297.5Q381,345,347.5,396.5Q314,448,248.5,452Q183,456,144,405.5Q105,355,85.5,302.5Q66,250,85,197Q104,144,148.5,109.5Q193,75,253,65Q313,55,367,90.5Q421,126,424,188Q427,250,404,297.5Z;
-            
-                M455.5,321Q445,392,375,406.5Q305,421,252,414Q199,407,126,400Q53,393,60.5,321.5Q68,250,95,203.5Q122,157,157,114Q192,71,247.5,79Q303,87,344.5,119Q386,151,426,200.5Q466,250,455.5,321Z;
-            
-                M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z
-                "
-                calcMode="linear"
-                keyTimes="0; 0.25; 0.5; 0.75; 1"
-                repeatCount="indefinite"
-                />
-            </path>
-          </svg>
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color: rgb(255, 232, 167);"></stop>
+            <stop offset="100%" style="stop-color: rgb(255, 124, 30);"></stop>
+          </linearGradient>
+        </defs>
+        <path fill="url(#gradient)">
+          <animate attributeName="d"
+            dur="10s"
+            repeatCount="indefinite"
+            values="
+              M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
+              M423,320.5Q444,391,373.5,402.5Q303,414,251,411Q199,408,146.5,385.5Q94,363,57,306.5Q20,250,62.5,197Q105,144,152,119Q199,94,250.5,91.5Q302,89,353,113.5Q404,138,403,194Q402,250,423,320.5Z;
+              M404,297.5Q381,345,347.5,396.5Q314,448,248.5,452Q183,456,144,405.5Q105,355,85.5,302.5Q66,250,85,197Q104,144,148.5,109.5Q193,75,253,65Q313,55,367,90.5Q421,126,424,188Q427,250,404,297.5Z;
+              M455.5,321Q445,392,375,406.5Q305,421,252,414Q199,407,126,400Q53,393,60.5,321.5Q68,250,95,203.5Q122,157,157,114Q192,71,247.5,79Q303,87,344.5,119Q386,151,426,200.5Q466,250,455.5,321Z;
+              M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z
+            "
+            calcMode="linear"
+            keyTimes="0; 0.25; 0.5; 0.75; 1"
+            repeatCount="indefinite"
+          />
+        </path>
+      </svg>
     </div>
     <!--==== Effect blob ====-->
     <div class="blob">
-        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color: rgb(255, 232, 167);"></stop>
-                <stop offset="100%" style="stop-color: rgb(255, 124, 30);"></stop>
-              </linearGradient>
-            </defs>
-
-            <path fill="url(#gradient)">
-                <animate attributeName="d"
-                dur="10s"
-                repeatCount="indefinite"
-                values="
-                M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
-            
-                M423,320.5Q444,391,373.5,402.5Q303,414,251,411Q199,408,146.5,385.5Q94,363,57,306.5Q20,250,62.5,197Q105,144,152,119Q199,94,250.5,91.5Q302,89,353,113.5Q404,138,403,194Q402,250,423,320.5Z;
-            
-                M404,297.5Q381,345,347.5,396.5Q314,448,248.5,452Q183,456,144,405.5Q105,355,85.5,302.5Q66,250,85,197Q104,144,148.5,109.5Q193,75,253,65Q313,55,367,90.5Q421,126,424,188Q427,250,404,297.5Z;
-            
-                M455.5,321Q445,392,375,406.5Q305,421,252,414Q199,407,126,400Q53,393,60.5,321.5Q68,250,95,203.5Q122,157,157,114Q192,71,247.5,79Q303,87,344.5,119Q386,151,426,200.5Q466,250,455.5,321Z;
-            
-                M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z
-                "
-                calcMode="linear"
-                keyTimes="0; 0.25; 0.5; 0.75; 1"
-                repeatCount="indefinite"
-                />
-            </path>
-          </svg>
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color: rgb(255, 232, 167);"></stop>
+            <stop offset="100%" style="stop-color: rgb(255, 124, 30);"></stop>
+          </linearGradient>
+        </defs>
+        <path fill="url(#gradient)">
+          <animate attributeName="d"
+            dur="10s"
+            repeatCount="indefinite"
+            values="
+              M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
+              M423,320.5Q444,391,373.5,402.5Q303,414,251,411Q199,408,146.5,385.5Q94,363,57,306.5Q20,250,62.5,197Q105,144,152,119Q199,94,250.5,91.5Q302,89,353,113.5Q404,138,403,194Q402,250,423,320.5Z;
+              M404,297.5Q381,345,347.5,396.5Q314,448,248.5,452Q183,456,144,405.5Q105,355,85.5,302.5Q66,250,85,197Q104,144,148.5,109.5Q193,75,253,65Q313,55,367,90.5Q421,126,424,188Q427,250,404,297.5Z;
+              M455.5,321Q445,392,375,406.5Q305,421,252,414Q199,407,126,400Q53,393,60.5,321.5Q68,250,95,203.5Q122,157,157,114Q192,71,247.5,79Q303,87,344.5,119Q386,151,426,200.5Q466,250,455.5,321Z;
+              M443,301.5Q392,353,352,396.5Q312,440,254,428.5Q196,417,143,391.5Q90,366,77,308Q64,250,62,181Q60,112,126,91Q192,70,258.5,44.5Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z
+            "
+            calcMode="linear"
+            keyTimes="0; 0.25; 0.5; 0.75; 1"
+            repeatCount="indefinite"
+          />
+        </path>
+      </svg>
     </div>
     <div class="home-text">
-        <span>Selamat Datang di </span>
-        <h1>BurgerNiz</h1>
-        <h2>Enjoy the best burger ever</h2>
-        <a href="#" class="btn">Join Now</a>
+      <span>Selamat Datang di </span>
+      <h1>BurgerNiz</h1>
+      <h2>Enjoy the best burger ever</h2>
+      <a href="#" class="btn">Join Now</a>
     </div>
     <div class="home-img">
-        <img src="Asset/Home .png" alt="">
+      <img src="Asset/Home .png" alt="">
     </div>
-    
-</section>
-<!--=============== Home End ===============-->   
+  </section>
+  <!--=============== Home End ===============-->   
 
-<!--=============== About Start ===============--> 
-<section class="about" id="about">
+  <!--=============== About Start ===============--> 
+  <section class="about" id="about">
     <div class="about-img">
-        <img src="Asset/about.jpg" alt="">
+      <img src="Asset/about.jpg" alt="">
     </div>
     <div class="about-text">
-        <span>About BurgerNiz </span>
-        <h2> Kami Menyajikan Burger <br> Legend!!!!</h2>
-        <p>Burger kami terbuat dari bahan-bahan segar berkualitas tinggi. Kami memperhatikan setiap detail, mulai dari pemilihan daging sapi terbaik hingga saus rahasia kami yang unik. Gigit BurgerNiz dan rasakan kelezatan yang tak terlupakan!</p>
-        <a href="#" class="btn">Pelajari Lebih Lanjut</a>
+      <span>About BurgerNiz </span>
+      <h2> Kami Menyajikan Burger <br> Legend!!!!</h2>
+      <p>Burger kami terbuat dari bahan-bahan segar berkualitas tinggi. Kami memperhatikan setiap detail, mulai dari pemilihan daging sapi terbaik hingga saus rahasia kami yang unik. Gigit BurgerNiz dan rasakan kelezatan yang tak terlupakan!</p>
+      <a href="#" class="btn">Pelajari Lebih Lanjut</a>
     </div>
-</section>
-   
-<!--=============== About End ===============-->   
+  </section>
+  <!--=============== About End ===============-->   
 
-<!--=============== Favorit start===============-->   
-<section class="favorit" id="favorit">
+  <!--=============== Favorit start ===============-->   
+  <section class="favorit" id="favorit">
     <div class="heading">
-        <span> Cobalah</span>
-        <h1> Menu Favorit Kami </h1>
+      <span> Cobalah</span>
+      <h1> Menu Favorit Kami </h1>
     </div>
     <div class="favorit-container">
-        <div class="box">
-            <div class="box-img">
-                <img src="Asset/menu 1.png">
-            </div>
+      <div class="box">
+        <div class="box-img">
+          <img src="Asset/menu 1.png">
+        </div>
         <div class="stars">
-            <i class="ri-shield-star-line"></i>
-            <i class="ri-shield-star-line"></i>
-            <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
         </div>
         <h2>ORNIZ</h2>
         <span>20k</span>
-        <a href="pesanan.php?nama_burger=Orniz&harga=20000"class="btn"><button>TRY NOW</button></a>
-        </div>
-
-        <div class="box">
+        <a href="pesanan.php?nama_burger=Orniz&harga=20000" class="btn"><button>TRY NOW</button></a>
+      </div>
+      <div class="box">
         <div class="box-img">
-        <img src="Asset/menu 5.png"> </div>
+          <img src="Asset/menu 5.png">
+        </div>
         <div class="stars">
-            <i class="ri-shield-star-line"></i>
-            <i class="ri-shield-star-line"></i>
-            <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
         </div>
         <h2>BLAPANIZ</h2>
         <span>35k</span>
-        <a href="pesanan.php?nama_burger=Blapaniz&harga=35000"class="btn"><button>TRY NOW</button></a>
+        <a href="pesanan.php?nama_burger=Blapaniz&harga=35000" class="btn"><button>TRY NOW</button></a>
+      </div>
+      <div class="box">
+        <div class="box-img">
+          <img src="Asset/menu 7 .png">
         </div>
-        
-        <div class="box">
-            <div class="box-img">
-            <img src="Asset/menu 7 .png"> </div>
-            <div class="stars">
-                <i class="ri-shield-star-line"></i>
-                <i class="ri-shield-star-line"></i>
-                <i class="ri-shield-star-line"></i>
-            </div>
-            <h2>VALONIZ</h2>
-            <span>50k</span>
-            <a href="pesanan.php?nama_burger=Valoniz&harga=50000"class="btn"><button>TRY NOW</button></a>
-            </div>
-            
-        <div class="box">
-            <div class="box-img">
-            <img src="Asset/menu 8.png"> </div>
-            <div class="stars">
-                <i class="ri-shield-star-line"></i>
-                <i class="ri-shield-star-line"></i>
-                <i class="ri-shield-star-line"></i>
-            </div>
-            <h2>ALIENIZ</h2>
-            <span>150k</span>
-            <a href="pesanan.php?nama_burger=Alieniz&harga=150000"class="btn"><button>ORDER NOW</button></a>>
-            </div>
-</section>
-<!--=============== Favorit End===============-->  
-
-<!--=============== Menu start===============--> 
-<section class="menu" id="menu">
-    <div class="heading-menu">
-        <h1> Daftar Menu</h1>
-        <span> Pilihlah burgermu </span>
-        
-    </div>
-    <div class="wrapper">
-        <i id="left" class="ri-skip-left-fill"></i>
-        <ul class="carousel">
-        <li class="card">
-        <div class="img"><img src="Asset/menu 1.png" draggable="false"></div>
-        <h2>ORNIZ</h2>
-        <span>20k</span>
-        <a href="pesanan.php?nama_burger=Orniz&harga=20000"class="btn"><button>ORDER NOW</button></a>
-        </li>
-
-        <li class="card">
-            <div class="img"><img src="Asset/menu 2 .png" draggable="false"></div>
-            <h2>BANIZ</h2>
-            <span>25k</span>
-            <a href="pesanan.php?nama_burger=Baniz&harga=25000"class="btn"><button>ORDER NOW</button></a>
-        </li>
-
-        <li class="card">
-            <div class="img"><img src="Asset/menu 3.png"draggable="false"> </div>
-            <h2>DODAANIZ</h2>
-            <span>35k</span>
-            <a href="pesanan.php?nama_burger=Dodaaniz&harga=35000"class="btn"><button>ORDER NOW</button></a>
-            </li>
-
-        <li class="card">
-                <div class="img"><img src="Asset/menu 4.png" draggable="false"> </div>
-                <h2>VENIZ</h2>
-                <span>65k</span>
-                <a href="pesanan.php?nama_burger=Veniz&harga=65000"class="btn"><button>ORDER NOW</button></a>
-        </li>
-
-        <li class="card">
-            <div class="img">
-            <img src="Asset/menu 5.png" draggable="false"> </div>
-            <h2>BLAPANIZ</h2>
-            <span>35k</span>
-            <a href="pesanan.php?nama_burger=Blapaniz&harga=35000"class="btn"><button>ORDER NOW</button></a>
-            </li>
-        
-         <li class="card">
-            <div class="img">
-            <img src="Asset/menu 6.png" draggable="false"> </div>
-            <h2>CHINIZ</h2>
-            <span>39k</span>
-            <a href="pesanan.php?nama_burger=Chiniz&harga=39000"class="btn"><button>ORDER NOW</button></a>
-            </li>
-
-         <li class="card">
-            <div class="img">
-            <img src="Asset/menu 7 .png" draggable="false"> </div>
-            <h2>VALONIZ</h2>
-            <span>50k</span>
-            <a href="pesanan.php?nama_burger=Valoniz&harga=50000"class="btn"><button>ORDER NOW</button></a>
-            </li>
-        
-            <li class="card">
-            <div class="img">
-            <img src="Asset/menu 8.png" draggable="false"> </div>
-            <h2>ALIENIZ</h2>
-            <span>150k</span>
-            <a href="pesanan.php?nama_burger=Alieniz&harga=150000"class="btn"><button>ORDER NOW</button></a>
-            </li>
-        </ul>
-        <i id="right" class="ri-skip-right-fill"></i>
-</section>
- <!--=============== Menu End===============-->   
-
- <!--=============== Contact Start===============-->   
-<section class="contact" id="contact">
-    <div class="heading1">
-        <span> Kontak Kami</span>
-    </div>
-    <div class="contact-container">
-        <div class="contact-info">
-            <h2>Get In Touch</h2>
-            <p>Kalian bisa mengunjungi alamat dan menghubungi beberapa kontak kami</p>
-            <div class="adress">
-                <i class="ri-map-pin-line"><span>Jalan Kampung Duren, Tangerang Selatan, Banten</span></i><br>
-                <i class="ri-phone-line"><span>+62 -800-9021-7821</span></i><br>
-                <i class="ri-mail-line"><span>BurgerNiz17@gmail.com</span></i>
-            </div>
-            <div class="social">
-                <a href="#"><i class="ri-facebook-line"></i></a>
-                <a href="#"><i class="ri-twitter-x-line"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-            </div>
+        <div class="stars">
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
         </div>
-        <div>
-            <!-- Tambahkan ID dan name pada form -->
-            <form id="contactForm" action="">
-                <input type="text" name="nama" placeholder="Nama" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="pesan" cols="30" rows="10" placeholder="Pesan" required></textarea>
-                <button type="submit" class="btn">Submit</button>
-            </form>
-            <!-- Loading indicator (default disembunyikan) -->
-            <div id="loading" style="display:none; margin-top:10px;">Sedang memproses...</div>
-            <!-- Notification untuk feedback -->
-            <div id="notification" style="display:none; padding: 10px; margin-top:10px; border-radius:4px;"></div>
+        <h2>VALONIZ</h2>
+        <span>50k</span>
+        <a href="pesanan.php?nama_burger=Valoniz&harga=50000" class="btn"><button>TRY NOW</button></a>
+      </div>
+      <div class="box">
+        <div class="box-img">
+          <img src="Asset/menu 8.png">
         </div>
+        <div class="stars">
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
+          <i class="ri-shield-star-line"></i>
+        </div>
+        <h2>ALIENIZ</h2>
+        <span>150k</span>
+        <a href="pesanan.php?nama_burger=Alieniz&harga=150000" class="btn"><button>ORDER NOW</button></a>
+      </div>
     </div>
   </section>
-  <!--=============== Contact End===============-->
-  
+  <!--=============== Favorit End ===============-->  
 
-<!--=============== Maps Start ===============-->  
-<!-- Menyisipkan library Google Maps -->
-    <script 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLOnIH6a2nwyw0bFaXXSphOdCcuh39w1o&callback=initialize" 
-        defer>
-    </script>
+  <!--=============== Menu start ===============--> 
+  <section class="menu" id="menu">
+    <div class="heading-menu">
+      <h1> Daftar Menu</h1>
+      <span> Pilihlah burgermu </span>
+    </div>
+    <div class="wrapper">
+      <i id="left" class="ri-skip-left-fill"></i>
+      <ul class="carousel">
+        <li class="card">
+          <div class="img"><img src="Asset/menu 1.png" draggable="false"></div>
+          <h2>ORNIZ</h2>
+          <span>20k</span>
+          <a href="pesanan.php?nama_burger=Orniz&harga=20000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+        <li class="card">
+          <div class="img"><img src="Asset/menu 2 .png" draggable="false"></div>
+          <h2>BANIZ</h2>
+          <span>25k</span>
+          <a href="pesanan.php?nama_burger=Baniz&harga=25000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+        <li class="card">
+          <div class="img"><img src="Asset/menu 3.png" draggable="false"></div>
+          <h2>DODAANIZ</h2>
+          <span>35k</span>
+          <a href="pesanan.php?nama_burger=Dodaaniz&harga=35000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+        <li class="card">
+          <div class="img"><img src="Asset/menu 4.png" draggable="false"></div>
+          <h2>VENIZ</h2>
+          <span>65k</span>
+          <a href="pesanan.php?nama_burger=Veniz&harga=65000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+        <li class="card">
+          <div class="img"><img src="Asset/menu 5.png" draggable="false"></div>
+          <h2>BLAPANIZ</h2>
+          <span>35k</span>
+          <a href="pesanan.php?nama_burger=Blapaniz&harga=35000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+        <li class="card">
+          <div class="img"><img src="Asset/menu 6.png" draggable="false"></div>
+          <h2>CHINIZ</h2>
+          <span>39k</span>
+          <a href="pesanan.php?nama_burger=Chiniz&harga=39000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+        <li class="card">
+          <div class="img"><img src="Asset/menu 7 .png" draggable="false"></div>
+          <h2>VALONIZ</h2>
+          <span>50k</span>
+          <a href="pesanan.php?nama_burger=Valoniz&harga=50000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+        <li class="card">
+          <div class="img"><img src="Asset/menu 8.png" draggable="false"></div>
+          <h2>ALIENIZ</h2>
+          <span>150k</span>
+          <a href="pesanan.php?nama_burger=Alieniz&harga=150000" class="btn"><button>ORDER NOW</button></a>
+        </li>
+      </ul>
+      <i id="right" class="ri-skip-right-fill"></i>
+    </div>
+  </section>
+  <!--=============== Menu End ===============-->   
 
-    <script>
-        function initialize() {
-            // Koordinat tujuan
-            var koordinatTujuan = { lat: -6.262703560090138, lng: 106.65293643894292 };
+  <!--=============== Contact Start ===============-->   
+  <section class="contact" id="contact">
+    <div class="heading1">
+      <span> Kontak Kami</span>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <p>Kalian bisa mengunjungi alamat dan menghubungi beberapa kontak kami</p>
+        <div class="adress">
+          <i class="ri-map-pin-line"><span>Jalan Kampung Duren, Tangerang Selatan, Banten</span></i><br>
+          <i class="ri-phone-line"><span>+62 -800-9021-7821</span></i><br>
+          <i class="ri-mail-line"><span>BurgerNiz17@gmail.com</span></i>
+        </div>
+        <div class="social">
+          <a href="#"><i class="ri-facebook-line"></i></a>
+          <a href="#"><i class="ri-twitter-x-line"></i></a>
+          <a href="#"><i class="ri-instagram-line"></i></a>
+        </div>
+      </div>
+      <div>
+        <!-- Form kontak dengan ID dan input yang dilengkapi atribut name dan id -->
+        <form id="contactForm" action="">
+          <input type="text" name="nama" id="nama" placeholder="Nama" required>
+          <input type="email" name="email" id="email" placeholder="Email" required>
+          <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan" required></textarea>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+        <!-- Loading indicator (disembunyikan secara default) -->
+        <div id="loading" style="display:none; margin-top:10px;">Sedang memproses...</div>
+        <!-- Notifikasi feedback -->
+        <div id="notification" style="display:none; padding: 10px; margin-top:10px; border-radius:4px;"></div>
+      </div>
+    </div>
+  </section>
+  <!--=============== Contact End ===============-->   
 
-            // Properti peta
-            var propertiPeta = {
-                center: koordinatTujuan, // Mulai di lokasi tujuan
-                zoom: 15, // Zoom lebih dekat
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            
-            // Inisialisasi peta
-            var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+  <!--=============== Maps Start ===============-->  
+  <!-- Menyisipkan library Google Maps -->
+  <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLOnIH6a2nwyw0bFaXXSphOdCcuh39w1o&callback=initialize" 
+    defer>
+  </script>
+  <script>
+    function initialize() {
+      // Koordinat tujuan
+      var koordinatTujuan = { lat: -6.262703560090138, lng: 106.65293643894292 };
+      // Properti peta
+      var propertiPeta = {
+        center: koordinatTujuan, // Mulai di lokasi tujuan
+        zoom: 15, // Zoom lebih dekat
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      // Inisialisasi peta
+      var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+      // Menambahkan marker di lokasi tujuan
+      var marker = new google.maps.Marker({
+        position: koordinatTujuan,
+        map: peta,
+        title: "Rumah Annisa Eka Danti"
+      });
+      // Set ulang center agar langsung diarahkan ke lokasi tujuan
+      peta.setCenter(koordinatTujuan);
+    }
+  </script>
+  <!-- Elemen yang akan menjadi kontainer peta -->
+  <div id="googleMap" style="width:100%;height:400px;"></div>
+  <!--=============== Maps End ===============-->  
 
-            // Menambahkan marker di lokasi tujuan
-            var marker = new google.maps.Marker({
-                position: koordinatTujuan,
-                map: peta,
-                title: "Rumah Annisa Eka Danti"
-            });
-
-            // Set ulang center agar langsung diarahkan ke lokasi tujuan
-            peta.setCenter(koordinatTujuan);
-        }
-    </script>
-    <!-- Elemen yang akan menjadi kontainer peta -->
-    <div id="googleMap" style="width:100%;height:400px;"></div>
-<!--=============== Maps End===============-->  
-
-
-<!--=============== Footer Start===============-->  
- <div class="copyright">
+  <!--=============== Footer Start ===============-->  
+  <div class="copyright">
     <p> Copyright BurgerNiz Enjoy the best burger ever 2024</p>
-</div>  
-<!--=============== Footer End===============-->
+  </div>  
+  <!--=============== Footer End ===============-->
 
+  <!-- AJAX untuk form kontak (metode GET) -->
+  <script>
+    $(document).ready(function(){
+      $("#contactForm").submit(function(e) {
+        e.preventDefault(); // Mencegah form submit default (reload halaman)
+        $("#loading").show();
+        $("#notification").hide();
+        $.ajax({
+          url: "submitContact.php", // File PHP untuk memproses data
+          method: "GET", // Menggunakan GET sesuai permintaan
+          data: {
+            nama: $("#nama").val(),
+            email: $("#email").val(),
+            pesan: $("#pesan").val()
+          },
+          success: function(response) {
+  console.log(response);
+  $("#loading").hide();
+  let res = typeof response === "object" ? response : JSON.parse(response);
+  
+  if (res.status === "success") {
+    $("#notification").css({"background-color": "#d4edda", "color": "#155724"});
+    $("#contactForm")[0].reset();
+  } else {
+    $("#notification").css({"background-color": "#f8d7da", "color": "#721c24"});
+  }
+  $("#notification").text(res.message).show();
+},
 
+          error: function(xhr, status, error) {
+            $("#loading").hide();
+            $("#notification").css({"background-color": "#f8d7da", "color": "#721c24"});
+            $("#notification").text("Terjadi kesalahan: " + xhr.responseText).show();
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
