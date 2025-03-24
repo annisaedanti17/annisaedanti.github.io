@@ -3,24 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!--=============== TITLE ===============-->
   <title>BurgerNiz</title>
-
   <!--=============== FAVICON ===============-->
   <link rel="shortcut icon" href="asset/Logo.png" type="image/x-icon">
-
   <!--=============== REMIXICONS ===============-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
-
   <!--=============== CSS ===============-->
   <link rel="stylesheet" href="style.css">
-
   <!--=============== jQuery (untuk AJAX) ===============-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   <!--=============== JS (main.js) ===============-->
   <script src="main.js" defer></script>
+  <style>
+    /* Spinner Loading */
+    #spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--main-color);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
   <canvas id="canvas"></canvas>
@@ -278,10 +288,16 @@
           <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan" required></textarea>
           <button type="submit" class="btn">Submit</button>
         </form>
-        <!-- Loading indicator (disembunyikan secara default) -->
-        <div id="loading" style="display:none; margin-top:10px;">Sedang memproses...</div>
+        <!-- Loading indicator dengan spinner -->
+        <div id="loading" style="display:none; margin-top:10px;">
+          <div id="spinner"></div>
+        </div>
         <!-- Notifikasi feedback -->
         <div id="notification" style="display:none; padding: 10px; margin-top:10px; border-radius:4px;"></div>
+        <!-- Elemen untuk menampilkan jumlah total feedback -->
+        <div id="feedbackCountContainer" style="margin-top:10px;">
+          Total Feedback: <span id="feedbackCount">0</span>
+        </div>
       </div>
     </div>
   </section>
@@ -295,27 +311,21 @@
   </script>
   <script>
     function initialize() {
-      // Koordinat tujuan
       var koordinatTujuan = { lat: -6.262703560090138, lng: 106.65293643894292 };
-      // Properti peta
       var propertiPeta = {
-        center: koordinatTujuan, // Mulai di lokasi tujuan
-        zoom: 15, // Zoom lebih dekat
+        center: koordinatTujuan,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      // Inisialisasi peta
       var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
-      // Menambahkan marker di lokasi tujuan
       var marker = new google.maps.Marker({
         position: koordinatTujuan,
         map: peta,
         title: "Rumah Annisa Eka Danti"
       });
-      // Set ulang center agar langsung diarahkan ke lokasi tujuan
       peta.setCenter(koordinatTujuan);
     }
   </script>
-  <!-- Elemen yang akan menjadi kontainer peta -->
   <div id="googleMap" style="width:100%;height:400px;"></div>
   <!--=============== Maps End ===============-->  
 
@@ -325,35 +335,54 @@
   </div>  
   <!--=============== Footer End ===============-->
 
-  <!-- AJAX untuk form kontak (metode GET) -->
+  <!-- AJAX untuk form kontak (metode GET) dengan spinner selama 1 detik -->
   <script>
+    // Fungsi untuk update jumlah feedback dari database
+    function updateFeedbackCount() {
+      $.ajax({
+        url: "getFeedbackCount.php",
+        method: "GET",
+        success: function(response) {
+          let count = typeof response === "object" ? response.total : JSON.parse(response).total;
+          $("#feedbackCount").text(count);
+        },
+        error: function() {
+          $("#feedbackCount").text("Error");
+        }
+      });
+    }
+
     $(document).ready(function(){
+      // Panggil updateFeedbackCount saat halaman dimuat
+      updateFeedbackCount();
+
       $("#contactForm").submit(function(e) {
-        e.preventDefault(); // Mencegah form submit default (reload halaman)
+        e.preventDefault();
         $("#loading").show();
         $("#notification").hide();
         $.ajax({
-          url: "submitContact.php", // File PHP untuk memproses data
-          method: "GET", // Menggunakan GET sesuai permintaan
+          url: "submitContact.php",
+          method: "GET",
           data: {
             nama: $("#nama").val(),
             email: $("#email").val(),
             pesan: $("#pesan").val()
           },
           success: function(response) {
-  console.log(response);
-  $("#loading").hide();
-  let res = typeof response === "object" ? response : JSON.parse(response);
-  
-  if (res.status === "success") {
-    $("#notification").css({"background-color": "#d4edda", "color": "#155724"});
-    $("#contactForm")[0].reset();
-  } else {
-    $("#notification").css({"background-color": "#f8d7da", "color": "#721c24"});
-  }
-  $("#notification").text(res.message).show();
-},
-
+            setTimeout(function() {  // Tunda selama 1 detik agar spinner terlihat
+              $("#loading").hide();
+              let res = typeof response === "object" ? response : JSON.parse(response);
+              if (res.status === "success") {
+                $("#notification").css({"background-color": "#d4edda", "color": "#155724"});
+                $("#contactForm")[0].reset();
+                // Update jumlah feedback setelah submit berhasil
+                updateFeedbackCount();
+              } else {
+                $("#notification").css({"background-color": "#f8d7da", "color": "#721c24"});
+              }
+              $("#notification").text(res.message).show();
+            }, 1000);
+          },
           error: function(xhr, status, error) {
             $("#loading").hide();
             $("#notification").css({"background-color": "#f8d7da", "color": "#721c24"});
