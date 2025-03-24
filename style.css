@@ -13,13 +13,13 @@
 
 :root{
     --main-color: #FFA559;
-    --socond-color: #454545;
+    --second-color: #454545; /* Perbaikan variabel */
 }
 
 .dark-theme {
     --primary-color: #454545;
     --secondary-color: #FFA559;
-    background-color: #454545; 
+    background-color: var(--primary-color); 
     color: #fff; 
 }
 
@@ -27,13 +27,38 @@ section{
     padding: 50px 10%;
 }
 
-* ::selection{
-    padding: #fff;
+::selection{
+    /* Menghapus properti padding yang salah */
     background-color: var(--main-color);
+    color: #fff;
 }
 
 img{
     width: 100%;
+}
+
+/* Memastikan canvas berada di belakang dan tidak mengganggu interaksi */
+canvas#canvas {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+    z-index: -1; /* canvas di belakang elemen lain */
+    pointer-events: none; /* canvas tidak menerima event */
+}
+
+.blob{
+    position: absolute;
+    width: 650px; 
+    height: 650px;
+    border-radius: 50%; 
+    top: 5%;
+    left: 45%;
+}
+
+.blob:nth-child(2){
+    filter: blur(20px);
 }
 
 /*==========================Header/Navbar Section================================*/
@@ -51,13 +76,8 @@ header{
 }
 
 header.active{
-    background: var(--socond-color);
-    box-shadow: 0 0 4px rgb(14 55 54 /14%);
-}
-
-header.active{
-    background: var(--socond-color);
-    box-shadow: 0 0 4px rgb(14 55 54 /14%);
+    background: var(--second-color);
+    box-shadow: 0 0 4px rgba(14,55,54,0.14);
 }
 
 header.active .logo{
@@ -73,7 +93,7 @@ header.active .navbar a{
     align-items: center;
     font-size: 1.1rem;
     font-weight: 600;
-    color:var(--main-color);
+    color: var(--main-color);
 }
 
 .logo img{
@@ -94,11 +114,25 @@ header.active .navbar a{
     text-transform: uppercase;
 }
 
+.btn-login{
+    padding: 7px;
+    border: 2px solid var(--main-color);
+    border-radius: 20px;
+    color: var(--main-color);
+    font-weight: 400;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    color: var(--second-color);
+    background-color: var(--main-color);
+}
+
 .navbar a:hover{
     color: #454545;
     background: var(--main-color);
     border-radius: 4px;
-
 }
 
 .menu-icon {
@@ -113,8 +147,6 @@ header.active .navbar a{
     cursor: pointer;
 }
 
-
-
 /*==========================Home Section================================*/
 .home {
     width: 100%;
@@ -123,6 +155,7 @@ header.active .navbar a{
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
+    position: relative;
 }
 
 .home-text {
@@ -138,6 +171,10 @@ header.active .navbar a{
     width: 75%;
     height: 75%;
     animation: animate 3s linear infinite;
+    position: relative; 
+    top: 50%;
+    left: 5%;
+    z-index: 1; 
 }
 
 @keyframes animate{
@@ -165,7 +202,7 @@ header.active .navbar a{
 }
 
 .home-text h2{
-    font-size: 1.8 rem;
+    font-size: 1.8rem; /* Hilangkan spasi pada unit rem */
     font-weight: 600;
     margin: 0.5rem 0 1.4rem;
 }
@@ -181,7 +218,7 @@ header.active .navbar a{
 }
 
 .btn:hover{
-    color: var(--socond-color);
+    color: var(--second-color);
     background-color: var(--main-color);
 }
 
@@ -225,7 +262,6 @@ header.active .navbar a{
     margin-top: 0.5rem;
 }
 
-
 /*==========================Favorit Section================================*/
 .heading{
     text-align: center;
@@ -234,7 +270,7 @@ header.active .navbar a{
 .heading span{
     font-size: 1rem;
     font-weight: 600;
-    color: var(--socond-color);
+    color: var(--second-color);
 }
 
 .heading h1{
@@ -253,7 +289,7 @@ header.active .navbar a{
 
 .favorit-container .box{
     flex: 1 1 10tem;
-    background: var(--socond-color);
+    background: var(--second-color);
     padding: 20px;
     display: flex;
     text-align: center;
@@ -261,11 +297,10 @@ header.active .navbar a{
     align-items: center;
     margin-top: 3rem;
     border-radius: 0.5rem;
-    
 }
 
 .favorit-container .box .box-img{
-    width: 200px ;
+    width: 200px;
     height: 200px;
     margin-top: -100px;
 }
@@ -311,14 +346,12 @@ header.active .navbar a{
 
 .box .btn{
     border: 2px solid #fff;
-    color: var(#fff);
+    color: #fff; /* Perbaikan warna */
 }
 
 .box .btn:hover{
    background: var(--main-color);
 }
-
-
 
 /*==========================Menu Section================================*/
 .heading-menu{
@@ -328,7 +361,7 @@ header.active .navbar a{
 .heading-menu span{
     font-size: 1rem;
     font-weight: 600;
-    color: var(--socond-color);
+    color: var(--second-color);
 }
 
 .heading-menu h1{
@@ -370,11 +403,11 @@ header.active .navbar a{
      grid-auto-flow: column;
      grid-auto-columns: calc((100%/3))- 12px;
      gap: 16px;
-     overflow:auto;
+     overflow: auto;
      scroll-snap-type: x mandatory;
      scroll-behavior: smooth;
      scrollbar-width: 0;
-    }
+}
 .carousel ::-webkit-scrollbar{
     display: none;
 }
@@ -400,7 +433,7 @@ header.active .navbar a{
     list-style: none;
     border-radius: 8px;
     display: flex;
-    cursor:pointer;
+    cursor: pointer;
     padding-bottom: 15px;
     align-items: center;
     justify-content: center;
@@ -411,7 +444,6 @@ header.active .navbar a{
     width: 250px;
     height: 250px;
     border-radius: 50%;
-
 }
 .card .img img{
     width: 242px;
@@ -426,7 +458,7 @@ header.active .navbar a{
 }
 .card span{
     color: var(--main-color);
-    font-size:  1.31rem;
+    font-size: 1.31rem;
 }
 
 @media screen and (max-width: 900px){
@@ -441,17 +473,14 @@ header.active .navbar a{
     }
 }
 
-
 /*==========================Contact Section================================*/
 .heading1{
     text-align: center;
-
 }
 .heading1 span{
     font-size: 2rem;
     font-weight: 600;
     color: var(--main-color);
-
 }
 
 .contact-container{
@@ -474,7 +503,6 @@ header.active .navbar a{
 
 .contact-info h2{
    font-size: 1.7rem;
-
 }
 
 .contact-info p{
@@ -509,7 +537,7 @@ header.active .navbar a{
 }
 
 .social a:hover{
-    color: var(--socond-color);
+    color: var(--second-color);
 }
 
 .contact-form form{
@@ -525,7 +553,7 @@ form input, textarea{
     outline: none;
     margin-bottom: 1rem;
     border: 2px solid var(--main-color);
-    box-shadow: 0 4px 4px 2px rgb(14 55 54 /14%);
+    box-shadow: 0 4px 4px 2px rgba(14,55,54,0.14);
 }
 
 form input::placeholder, textarea::placeholder{
@@ -533,7 +561,7 @@ form input::placeholder, textarea::placeholder{
 }
 
 form textarea{
-    resize:none;
+    resize: none;
     height: 150px;
 }
 
@@ -548,7 +576,7 @@ form .btn{
 }
 
 form .btn:hover{
-    background: var(--socond-color);
+    background: var(--second-color);
 }
 
 .copyright {
@@ -559,20 +587,16 @@ form .btn:hover{
     color: var(--main-color);
 }
 
-
 @media screen and (max-width: 660px) {
     header {
         padding: 11px 4%;
     }
-
     .menu-icon {
         display: initial; 
     }
-
     header.active .menu-icon {
         color: #fff;
     }
-
     header .navbar {
         position: absolute;
         top: 100%;
@@ -580,21 +604,18 @@ form .btn:hover{
         right: 0;
         display: none;
         flex-direction: column;
-        background: var(--socond-color);
-        box-shadow: 0 4px 4px rgb(14 55 54 /14%);
+        background: var(--second-color);
+        box-shadow: 0 4px 4px rgba(14,55,54,0.14);
         transition: 0.2s ease;
         text-align: center;
     }
-
     .navbar.active {
         display: flex; 
         top: calc(100% + 15px); 
     }
 }
-    .navbar a{
-        padding: 1.5rem;
-        display: block;
-        color:var(--main-color);
-    }
-
-
+.navbar a{
+    padding: 1.5rem;
+    display: block;
+    color: var(--main-color);
+}
